@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社New Ocean</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f9f9;
+    --bg-alt: #eaf2f3;
+    --navy: #16323e;
+    --teal: #2f7a8c;
+    --teal-deep: #1c4c58;
+    --teal-light: #8fc1cb;
+    --text: #2c3e40;
+    --text-muted: #6b7c7e;
+    --white: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Noto Sans JP", sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.9;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    font-family: "Shippori Mincho", serif;
+    margin: 0;
+    color: var(--navy);
+    font-weight: 600;
+  }
+  p { margin: 0 0 14px; }
+  a { text-decoration: none; }
+
+  section {
+    padding: 120px 24px;
+  }
+  .inner {
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    color: var(--teal);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .center { text-align: center; }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(ellipse at 50% 30%, var(--teal-deep) 0%, var(--navy) 70%);
+    color: var(--white);
+    padding: 40px 24px;
+    overflow: hidden;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+  .hero .eyebrow {
+    color: var(--teal-light);
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.2s forwards;
+  }
+  .hero h1 {
+    color: var(--white);
+    font-size: clamp(32px, 5vw, 52px);
+    letter-spacing: 0.06em;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.5s forwards;
+  }
+  .hero .catch {
+    font-family: "Shippori Mincho", serif;
+    font-size: clamp(18px, 2.4vw, 24px);
+    letter-spacing: 0.1em;
+    color: var(--teal-light);
+    margin-top: 32px;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.9s forwards;
+  }
+  .hero .scroll-cue {
+    margin-top: 80px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.5);
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1.6s forwards, bob 2.4s ease-in-out 2.6s infinite;
+  }
+  .bubbles {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .bubble {
+    position: absolute;
+    bottom: -60px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), rgba(255,255,255,0.05));
+    animation: rise linear infinite;
+  }
+  @keyframes rise {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    10% { opacity: 0.7; }
+    90% { opacity: 0.4; }
+    100% { transform: translateY(-110vh) translateX(20px); opacity: 0; }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* Mission */
+  .mission p {
+    font-family: "Shippori Mincho", serif;
+    font-size: clamp(17px, 2vw, 21px);
+    letter-spacing: 0.04em;
+    color: var(--navy);
+    line-height: 2.2;
+  }
+
+  /* Core Values */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    text-align: center;
+    margin-top: 56px;
+  }
+  .value-box {
+    background: var(--white);
+    padding: 48px 24px;
+    border-radius: 4px;
+  }
+  .value-box .icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 24px;
+    border: 1px solid var(--teal-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--teal);
+    font-family: "Shippori Mincho", serif;
+    font-size: 20px;
+  }
+  .value-box strong {
+    display: block;
+    font-family: "Shippori Mincho", serif;
+    font-size: 18px;
+    color: var(--navy);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .value-box p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* Services */
+  .service-card {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 40px;
+    align-items: center;
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(22,50,62,0.1);
+  }
+  .service-card:last-child { border-bottom: none; }
+  .service-card .thumb {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, var(--teal-light), var(--teal-deep));
+    border-radius: 4px;
+    object-fit: cover;
+    display: block;
+  }
+  .service-card .num {
+    font-family: "Shippori Mincho", serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--teal);
+    display: block;
+    margin-bottom: 8px;
+  }
+  .service-card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .service-card .desc {
+    font-size: 15px;
+    color: var(--text);
+  }
+  .service-card .meta {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+  .service-card .link {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--teal);
+    border-bottom: 1px solid var(--teal);
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+  }
+  .service-card .link:hover { opacity: 0.6; }
+
+  /* Company */
+  .company-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+  }
+  .company-table th, .company-table td {
+    text-align: left;
+    padding: 20px 16px;
+    border-bottom: 1px solid rgba(22,50,62,0.12);
+    font-size: 14px;
+    font-weight: 300;
+  }
+  .company-table th {
+    width: 140px;
+    color: var(--text-muted);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+
+  /* Contact / CTA */
+  .cta {
+    text-align: center;
+    background: linear-gradient(180deg, var(--bg-alt), var(--bg));
+  }
+  .cta h2 {
+    font-size: clamp(22px, 3vw, 30px);
+    letter-spacing: 0.04em;
+  }
+  .cta .sub {
+    color: var(--text-muted);
+    margin-top: 16px;
+    font-size: 15px;
+  }
+  .cta .btn {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 18px 48px;
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 999px;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+  }
+
+  footer {
+    text-align: center;
+    padding: 48px 24px 100px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    background: var(--navy);
+  }
+  footer .brand {
+    font-family: "Shippori Mincho", serif;
+    color: var(--white);
+    font-size: 15px;
+    margin-bottom: 16px;
+    letter-spacing: 0.1em;
+  }
+  footer a {
+    color: rgba(255,255,255,0.6);
+    margin: 0 12px;
+  }
+  footer a:hover { color: var(--white); }
+
+  /* Floating CTA */
+  .float-cta {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    background: var(--teal);
+    color: var(--white);
+    padding: 16px 28px;
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    box-shadow: 0 8px 24px rgba(22,50,62,0.25);
+    z-index: 100;
+  }
+
+  @media (max-width: 720px) {
+    section { padding: 80px 20px; }
+    .values-grid { grid-template-columns: 1fr; }
+    .service-card { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="bubbles">
+      <span class="bubble" style="left:8%; width:14px; height:14px; animation-duration:9s; animation-delay:0s;"></span>
+      <span class="bubble" style="left:18%; width:22px; height:22px; animation-duration:12s; animation-delay:1.5s;"></span>
+      <span class="bubble" style="left:30%; width:10px; height:10px; animation-duration:8s; animation-delay:3s;"></span>
+      <span class="bubble" style="left:42%; width:18px; height:18px; animation-duration:11s; animation-delay:0.5s;"></span>
+      <span class="bubble" style="left:55%; width:12px; height:12px; animation-duration:10s; animation-delay:2.5s;"></span>
+      <span class="bubble" style="left:65%; width:26px; height:26px; animation-duration:13s; animation-delay:4s;"></span>
+      <span class="bubble" style="left:75%; width:16px; height:16px; animation-duration:9.5s; animation-delay:1s;"></span>
+      <span class="bubble" style="left:85%; width:20px; height:20px; animation-duration:12.5s; animation-delay:3.5s;"></span>
+      <span class="bubble" style="left:93%; width:11px; height:11px; animation-duration:8.5s; animation-delay:2s;"></span>
+    </div>
+    <div class="hero-content">
+      <div class="eyebrow">NEW OCEAN INC.</div>
+      <h1>株式会社New Ocean</h1>
+      <p class="catch">新しい可能性を、切り拓く。</p>
+      <div class="scroll-cue">SCROLL</div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="mission center">
+    <div class="inner">
+      <div class="eyebrow">MISSION</div>
+      <p>恋愛も、発信も、挑戦も。</p>
+      <p>一人ひとりの中に眠る魅力を見つけ、磨き、世に届けるための伴走をする。</p>
+      <p>それが、私たちの仕事です。</p>
+    </div>
+  </section>
+
+  <!-- Core Values -->
+  <section style="background: var(--bg-alt);">
+    <div class="inner center">
+      <div class="eyebrow">CORE VALUES</div>
+      <h2>Core Values</h2>
+      <div class="values-grid">
+        <div class="value-box">
+          <div class="icon">01</div>
+          <strong>伴走する</strong>
+          <p>一人ひとりに寄り添い、最後まで並走する</p>
+        </div>
+        <div class="value-box">
+          <div class="icon">02</div>
+          <strong>本質を届ける</strong>
+          <p>テクニックではなく、本当に効くことだけを</p>
+        </div>
+        <div class="value-box">
+          <div class="icon">03</div>
+          <strong>可能性を信じる</strong>
+          <p>誰にでも、伸びしろがある</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section>
+    <div class="inner">
+      <div class="eyebrow center">SERVICES</div>
+      <h2 class="center">Services</h2>
+
+      <div style="margin-top:56px;">
+        <div class="service-card">
+          <img class="thumb" src="https://images.pexels.com/photos/6180716/pexels-photo-6180716.jpeg?auto=compress&cs=tinysrgb&w=800" alt="ほたてマジック">
+          <div>
+            <span class="num">SERVICE 01</span>
+            <h3>ほたてマジック</h3>
+            <p class="desc">その恋、終わらせない。マッチングアプリの写真・プロフィール・メッセージから、結婚までをサポート。</p>
+            <p class="meta">20〜30代男性向け／女性目線の1対1オーダーメイド恋愛コンサル／累計600人以上サポート</p>
+            <a class="link" href="#">詳細ページへ →</a>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img class="thumb" src="https://images.pexels.com/photos/16852355/pexels-photo-16852355.jpeg?auto=compress&cs=tinysrgb&w=800" alt="SNS顧問">
+          <div>
+            <span class="num">SERVICE 02</span>
+            <h3>SNS顧問</h3>
+            <p class="desc">もう、発信に迷わない。投稿、プロフィール、導線まで整えるSNS顧問。</p>
+            <a class="link" href="#">詳細ページへ（準備中） →</a>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img class="thumb" src="https://images.pexels.com/photos/3866509/pexels-photo-3866509.jpeg?auto=compress&cs=tinysrgb&w=800" alt="ローンチ支援">
+          <div>
+            <span class="num">SERVICE 03</span>
+            <h3>ローンチ支援</h3>
+            <p class="desc">その挑戦、独りにしない。商品・サービスのローンチを、企画から実行まで伴走支援。</p>
+            <a class="link" href="#">詳細ページへ（準備中） →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company -->
+  <section style="background: var(--bg-alt);">
+    <div class="inner">
+      <div class="eyebrow center">COMPANY</div>
+      <h2 class="center">Company</h2>
+      <table class="company-table">
+        <tr><th>会社名</th><td>株式会社New Ocean</td></tr>
+        <tr><th>代表者</th><td>小川 枝里子</td></tr>
+        <tr><th>所在地</th><td>東京都渋谷区渋谷2丁目19番15号 宮益坂ビルディング609</td></tr>
+        <tr><th>設立日</th><td>2024年8月8日</td></tr>
+        <tr><th>事業内容</th><td>恋愛・婚活コンサルティング（ほたてマジック） / SNS顧問 / ローンチ支援</td></tr>
+        <tr><th>連絡先</th><td>070-1312-1501</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- Contact / CTA -->
+  <section class="cta">
+    <div class="eyebrow">CONTACT</div>
+    <h2>まずは、お気軽にご相談ください。</h2>
+    <p class="sub">恋愛のこと、発信のこと、挑戦のこと。まずはお話しませんか。</p>
+    <a class="btn" href="#">お問い合わせはこちら →</a>
+  </section>
+
+  <footer>
+    <div class="brand">New Ocean Inc.</div>
+    <p>&copy; 2026 New Ocean Inc. All rights reserved.</p>
+    <a href="tokushoho.html">特定商取引法に基づく表記</a>
+    <a href="#">プライバシーポリシー</a>
+  </footer>
+
+  <a href="#" class="float-cta">お問い合わせ →</a>
+
+</body>
+</html>
